@@ -1,36 +1,129 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎮 2048 Game
 
-## Getting Started
+A modern, web-based implementation of the classic 2048 game, built with Next.js, React, and SQLite. 🚀
 
-First, run the development server:
+## 🌟 Play Now!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+**[Play 2048 Game](https://2048.danilosprovieri.com)**
+
+Visit [https://2048.danilosprovieri.com](https://2048.danilosprovieri.com) to play the game live!
+
+## 📋 Table of Contents
+
+- [✨ Features](#-features)
+- [🛠️ Technologies Used](#️-technologies-used)
+- [🚀 Getting Started](#-getting-started)
+    - [📋 Prerequisites](#-prerequisites)
+    - [⚙️ Installation](#️-installation)
+- [🕹️ How to Play](#️-how-to-play)
+- [🏗️ Project Structure](#️-project-structure)
+- [🌐 API Endpoints](#-api-endpoints)
+- [💾 Database](#-database)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
+
+## ✨ Features
+
+- 🧩 Classic 2048 gameplay with smooth animations
+- 📱 Responsive design for desktop and mobile devices
+- 🏆 Leaderboard to track high scores
+- 🔒 Session-based score tracking to prevent duplicates
+- ⚡ Server-side rendering with Next.js for optimal performance
+- 🌍 Accessible online at [2048.danilosprovieri.com](https://2048.danilosprovieri.com)
+
+## 🛠️ Technologies Used
+
+- ⚛️ Next.js
+- ⚛️ React
+- 🗄️ SQLite
+- 🎨 Tailwind CSS
+- 🌟 Framer Motion (for animations)
+- 🆔 UUID (for generating unique session IDs)
+
+## 🚀 Getting Started
+
+### 📋 Prerequisites
+
+- 📦 Node.js (v14 or later)
+- 📦 npm (v6 or later)
+
+### ⚙️ Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/2048-game.git
+   cd 2048-game
+   ```
+
+2. Install dependencies:
+   ```
+   npm install
+   ```
+
+3. Run the development server:
+   ```
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to play the game locally. 🎉
+
+Remember, you can always play the live version at [https://2048.danilosprovieri.com](https://2048.danilosprovieri.com)!
+
+## 🕹️ How to Play
+
+- 🔼🔽◀️▶️ Use arrow keys or swipe gestures on mobile to move tiles.
+- 🔢 Tiles with the same number merge when they touch.
+- 🏆 Create a tile with the number 2048 to win!
+- 📝 When the game ends, enter your name to save your score to the leaderboard.
+
+## 🏗️ Project Structure
+
+```
+2048-game/
+├── components/
+│   └── (React components)
+├── lib/
+│   └── db.js
+├── pages/
+│   ├── api/
+│   │   └── scores.js
+│   ├── _app.js
+│   ├── index.js
+│   └── leaderboard.js
+├── public/
+│   └── (static assets)
+├── styles/
+│   └── globals.css
+├── .gitignore
+├── next.config.js
+├── package.json
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌐 API Endpoints
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- 📊 `GET /api/scores`: Retrieve the top scores
+- ✏️ `POST /api/scores`: Add a new score
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 💾 Database
 
-## Learn More
+The project uses SQLite to store game scores. The database file (`leaderboard.sqlite`) is created automatically when the application runs for the first time.
 
-To learn more about Next.js, take a look at the following resources:
+Database schema:
+```sql
+CREATE TABLE scores (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        player_name TEXT NOT NULL,
+                        score INTEGER NOT NULL,
+                        session_id TEXT UNIQUE,
+                        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🤝 Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Contributions are welcome! Please feel free to submit a Pull Request. 👥
 
-## Deploy on Vercel
+## 📄 License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is open source and available under the [MIT License](LICENSE). 📜
